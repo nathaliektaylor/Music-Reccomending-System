@@ -1,51 +1,205 @@
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+* {
+    margin:0;
+    padding:0;
+    font-family: 'Courier New', Courier, monospace;
+}
 
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+/* intializing default page styles */
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+header {
+    min-width: 100vh;
+    width: 100%;
+    position: relative;
+    background-color: #efddcc;
+}
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+nav img {
+    width: 150px;
+    height: auto;
+    float: left;
+    border-radius: 30%;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+    margin-left: 2em;
+}
 
-jobs:
-  # Build job
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+.nav-links {
+    flex: 1;
+    text-align: right;
+}
 
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+.nav-links ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 1em 1em;
+    position: relative;
+    right: 4em;
+}
+
+.nav-links ul li a {
+    color: #301f1f;
+    text-decoration: none;
+    padding: .5em;
+    font-size: 1.5em;
+}
+
+.nav-links ul li :hover {
+    background-color: #ad8957;
+    border-radius: 10px;
+    padding: .5em;
+    transition: 0.5s ease;
+}
+
+.header-bar {
+    height: 3em;
+    background-color: #301f1f;
+}
+
+/* home page styles */
+
+.home-page {
+    display: flex;
+    padding: 2em;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.route-map iframe {
+    min-width: 50em;
+    height: auto;
+    clip-path: inset(0 0 10% 0);
+    margin: auto;
+    padding-right: 2em;
+}
+
+.home-text {
+    font-size: 1.5em;
+}
+
+.home-text h1 {
+    font-size: 3em;
+    padding-bottom: .2em;
+}
+
+.home-text h2 {
+    padding: 1em;
+    margin: .5em;
+    background-color: #c4d8dd;
+}
+
+.home-text p {
+    margin: 3em;
+}
+
+/* music page styles */
+.spotify, .my-music, .recommender {
+    width: 500px;
+    height: 500px;
+    margin: 1em;
+    border: 3px solid ;
+    background-color: #c4d8dd;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .spotify h2, .my-music h2, .recommender h2 {
+    padding: 1em 0;
+  }
+
+  .iframe-container {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .spotify iframe {
+    width: 90%;
+    height: 80%;
+  }
+
+  .my-music audio {
+    padding-bottom: 2em;
+  }
+
+.recommender input[type="text"], .recommender input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.recommender button {
+    background-color: #301f1f;
+    color: #fff;
+    font-size: 1em;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1em;
+}
+  
+button:hover {
+    background-color: #503131;
+}
+
+.resultsbox {
+    align-items: center;
+    flex-direction: column;
+}
+
+.results {
+    padding: 0 2em;
+    text-align: center;
+}
+
+/* reasons page styles */
+
+.reasons-page {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    align-items: center;
+}
+
+.reasons-page h2 {
+    margin: 1em;
+}
+
+.reasons-page li {
+    margin: 1em;
+}
+
+/* gallery page styles */
+
+.pictures{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.pictures img {
+    max-width: 350px;
+    height: auto;
+    margin: 5px;
+    border: 6px double black;
+}
+
